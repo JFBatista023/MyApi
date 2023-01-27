@@ -15,9 +15,54 @@
                 "tags": ["Role"],
                 "summary": "List all roles",
                 "description": "Return all roles paginated",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of the page",
+                        "required": false,
+                        "schema": {
+                            "type": "number",
+                            "example": "page=1"
+                        },
+                        "style": "label"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of registers per page",
+                        "required": false,
+                        "schema": {
+                            "type": "number",
+                            "example": "limit=15"
+                        },
+                        "style": "label"
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Success"
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "per_page": 15,
+                                    "total": 2,
+                                    "current_page": 1,
+                                    "data": [
+                                        {
+                                            "id": "1c2584ca-47ca-41ba-8246-e1335045a07f",
+                                            "name": "Admin",
+                                            "created_at": "2023-01-23T21:19:19.000Z"
+                                        },
+                                        {
+                                            "id": "d5de78a4-2433-4bab-8647-931b74c0f0df",
+                                            "name": "Client",
+                                            "created_at": "2023-01-27T01:31:19.000Z"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
                     }
                 }
             },
