@@ -113,6 +113,57 @@
             }
         },
         "/roles/{id}": {
+            "get": {
+                "tags": ["Roles"],
+                "summary": "Find roles by ID",
+                "description": "Returns roles based on ID",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identify of a role",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "label"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "id": "1c2584ca-47ca-41ba-8246-e1335045a07f",
+                                    "name": "Admin",
+                                    "created_at": "2023-01-23T21:19:19.000Z"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Role not found"
+                    }
+                }
+            },
             "put": {
                 "tags": ["Roles"],
                 "summary": "Update a role",
@@ -162,6 +213,11 @@
                                             "type": "string"
                                         }
                                     }
+                                },
+                                "example": {
+                                    "id": "1c2584ca-47ca-41ba-8246-e1335045a07f",
+                                    "name": "Admin",
+                                    "created_at": "2023-01-23T21:19:19.000Z"
                                 }
                             }
                         }
