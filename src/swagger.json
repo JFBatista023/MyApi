@@ -260,6 +260,85 @@
             }
         },
         "/users": {
+            "get": {
+                "tags": ["Users"],
+                "summary":"List all users",
+                "description": "Return all users paginated",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of the page",
+                        "required": false,
+                        "schema": {
+                            "type": "number",
+                            "example": "page=1"
+                        },
+                        "style": "label"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of registers per page",
+                        "required": false,
+                        "schema": {
+                            "type": "number",
+                            "example": "limit=15"
+                        },
+                        "style": "label"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "per_page": 15,
+                                    "total": 2,
+                                    "current_page": 1,
+                                    "data": [
+                                        {
+                                            "id": "bfd39b76-3dd5-49dd-aa9d-b48881ba549b",
+                                            "name": "teste",
+                                            "email": "teste@gmail.com",
+                                            "isAdmin": false,
+                                            "avatar": null,
+                                            "created_at": "2023-02-02T20:58:56.000Z",
+                                            "role": {
+                                              "id": "9a6b9871-e6fb-4b3c-8faf-997e0a1c7710",
+                                              "name": "T.I.",
+                                              "created_at": "2023-02-01T00:22:31.000Z"
+                                            },
+                                            "avatar_url": null
+                                        },
+                                        {
+                                            "id": "f684e534-8505-45cd-9c6e-e9d5c6b748be",
+                                            "name": "admin",
+                                            "email": "a@a.com",
+                                            "isAdmin": true,
+                                            "avatar": "f4fc2d0aa9206170835a_çµµå¿\u0083 ç\u0094\u009aå\u0085«.jpeg",
+                                            "created_at": "2023-02-01T00:22:31.000Z",
+                                            "role": {
+                                              "id": "9a6b9871-e6fb-4b3c-8faf-997e0a1c7710",
+                                              "name": "T.I.",
+                                              "created_at": "2023-02-01T00:22:31.000Z"
+                                            },
+                                            "avatar_url": "http://localhost:3001/files/f4fc2d0aa9206170835a_çµµå¿\u0083 ç\u0094\u009aå\u0085«.jpeg"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Invalid authentication token"
+                    }
+                }
+            },
             "post": {
                 "tags": ["Users"],
                 "summary": "Create a user",
