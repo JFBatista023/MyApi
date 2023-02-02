@@ -20,7 +20,7 @@ export class UpdateAvatarUseCase {
 
     async execute({ avatarFileName, userId }: UpdateAvatarDTO): Promise<User> {
         const user = await this.usersRepository.findById(userId);
-        if (user) {
+        if (!user) {
             throw new AppError(
                 "Only authenticated users can change avatar",
                 401,
