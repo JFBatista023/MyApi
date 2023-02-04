@@ -1,4 +1,5 @@
 import { Role } from "@roles/entities/Role";
+import { RefreshToken } from "@users/entities/RefreshToken";
 import { User } from "@users/entities/User";
 import { DataSource } from "typeorm";
 import { CreateRolesTable1674397560133 } from "./migrations/1674397560133-CreateRolesTable";
@@ -9,7 +10,7 @@ import { CreateRefreshTokensTable1675470119684 } from "./migrations/167547011968
 export const dataSource = new DataSource({
     type: "sqlite",
     database: "./db.sqlite",
-    entities: [Role, User],
+    entities: [Role, User, RefreshToken],
     migrations: [
         CreateRolesTable1674397560133,
         CreateUsersTable1674862649254,
