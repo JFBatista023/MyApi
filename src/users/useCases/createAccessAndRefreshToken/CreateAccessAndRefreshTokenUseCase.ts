@@ -6,7 +6,7 @@ import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 import jwtConfig from "@config/auth";
 
-type CreateAccessAndRefreshTokeDTO = {
+type CreateAccessAndRefreshTokenDTO = {
     user_id: string;
     refresh_token: string;
 };
@@ -30,7 +30,7 @@ export class CreateAccessAndRefreshTokenUseCase {
     public async execute({
         user_id,
         refresh_token,
-    }: CreateAccessAndRefreshTokeDTO): Promise<IResponse> {
+    }: CreateAccessAndRefreshTokenDTO): Promise<IResponse> {
         const user = await this.usersRepository.findById(user_id);
         if (!user) {
             throw new AppError("User not found", 404);
